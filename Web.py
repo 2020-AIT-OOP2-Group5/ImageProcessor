@@ -17,13 +17,9 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
-def uploads_file():
-
-
 @app.route('/upload_img/<filename>')    # アップロードされたファイルの処理
 def uploaded_file(filename):
-    return
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
 if __name__ == '__main__':
