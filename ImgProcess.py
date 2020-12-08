@@ -20,6 +20,7 @@ cny_img = cv2.Canny(gray, 100, 200)
 cv2.imwrite("Canny_img/ここはwatchdogで読み込んだファイル名", cny_img)
 
 #4.画像のグレースケール化（出来れば2値化も）
+def grayscale():
 gray_img = cv2.imread("ここはwatchdogで読み込んだファイル名",0)
 
 #閾値の自動設定
