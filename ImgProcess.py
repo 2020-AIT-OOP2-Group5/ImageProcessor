@@ -10,7 +10,7 @@ from watchdog.events import FileSystemEventHandler
 #2.顔を検出し、枠で囲う。
 
 #3.Cannyフィルタによる輪郭抽出。
-def cannyfilter(str filename):
+def cannyfilter(filename):
     #カレントディレクトリの移動
     os.chdir("./upload_img")
 
