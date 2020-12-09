@@ -5,7 +5,6 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import os.path
-
 #1.顔を検出し、モザイク処理。
 
 #2.顔を検出し、枠で囲う。
