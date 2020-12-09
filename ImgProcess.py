@@ -13,16 +13,17 @@ from watchdog.events import FileSystemEventHandler
 
 #4.画像のグレースケール化（出来れば2値化も）
 def grayscale(filepath):
-def grayscale(str filename):
     #カレントディレクトリの移動
     os.chdir("./upload_img")
-gray_img = cv2.imread("ここはwatchdogで読み込んだファイル名",0)
-gray_img = cv2.imread(filename)
+    gray_img = cv2.imread(filename,0)
 
-#閾値の自動設定
-otsu_img = cv2.threshold(gray_img, 0, 255, cv2.THRESH_OTSU)
+    #閾値の自動設定
+    otsu_img = cv2.threshold(gray_img, 0, 255, cv2.THRESH_OTSU)
+    
+    #カレントディレクトリの移動
+    os.chdir("../Gray_img")
 
-#画像の確認
-cv2.imwrite("Gray_img/ここはwatchdogで読み込んだファイル名",otsu_img)
- #カレントディレクトリの移動
+    #画像の確認
+    cv2.imwrite(filename,otsu_img)
+    #カレントディレクトリの移動
     os.chdir("../")
