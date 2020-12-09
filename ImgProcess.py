@@ -56,7 +56,8 @@ class ChangeHandler(FileSystemEventHandler):
         print("作成を検出")
         ext = os.path.splitext(filename)[1]
         if ext == ".png" or ext == ".jpeg" or ext == ".jpg":
-
+            cannyfilter(filename)
+            grayscale(filename)
     #ファイル変更時のイベント
     def on_modified(self,event):
         filepath = event.src_path
@@ -65,7 +66,8 @@ class ChangeHandler(FileSystemEventHandler):
         print("変更を検出")
         ext = os.path.splitext(filename)[1]
         if ext == ".png" or ext == ".jpeg" or ext == ".jpg":
-
+            cannyfilter(filename)
+            grayscale(filename)
     #ファイル移動時のイベント
     def on_moved(self,event):
         filepath = event.src_path
@@ -78,7 +80,12 @@ class ChangeHandler(FileSystemEventHandler):
         filename = os.path.basename(filepath)
         #それぞれの処理後にあるファイルも削除
         print("削除を検出")
-
+        if ext == ".png" or ext == ".jpeg" or ext == ".jpg":
+            os.chdir("./Canny_img")
+            os.remove(filename)
+            os.chdir("../Gray_img")
+            os.remove(filename)
+            os.chdir("../")
 if __name__ == "__main__":
     #ファイルの監視を開始
     event_handler = ChangeHandler()
