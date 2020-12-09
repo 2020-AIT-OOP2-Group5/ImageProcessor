@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 import os
 import time
-import os.path
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+import os.path
 
 target_dir = "./upload_img"
 
