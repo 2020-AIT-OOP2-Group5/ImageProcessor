@@ -17,7 +17,7 @@ target_dir = "./upload_img"
 
 #watchdogを実装
 
-class CheckHandler(FileSystemEventHandler):
+class ChangeHandler(FileSystemEventHandler):
     #ファイル作成時のイベント
     def on_created(self,event):
         filepath = event.src_path
@@ -45,7 +45,7 @@ class CheckHandler(FileSystemEventHandler):
 
 if __name__ == "__main__":
     #ファイルの監視を開始
-    event_handler = CheckHandler()
+    event_handler = ChangeHandler()
     observer = Observer()
     observer.schedule(event_handler, target_dir, recursive=True)
     observer.start()
@@ -54,5 +54,5 @@ if __name__ == "__main__":
             time.sleep(0.1)
     except KeyboardInterrupt:
         observer.stop()
-        observer.join()
+    observer.join()
 
